@@ -1,0 +1,26 @@
+<div *ngIf="items!=null;else espera" class="container">
+  <div class="container text-center">
+    <h2>Casos COVID Activos, Positivos y Confirmados</h2>
+  </div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Comuna/Barrio</th>
+        <th>Positivos</th>
+        <th>Recuperados</th>
+        <th>Activos</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items; let i = index;">
+      <td>{{i+1}}</td>
+      <td><p class="text-uppercase">{{item.comuna}}</p></td>
+      <td>{{item.positivos_confirmados}}</td>
+      <td>{{item.recuperados}}</td>
+      <td>{{item.activos}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+<ng-template #espera>Esperando Datos...</ng-template>
