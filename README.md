@@ -1,6 +1,5 @@
 # Integrantes:
 - Daniel Tutistar
-- Wilmer Fuenmayor
 
 # ConsumirJSON
 
