@@ -13,7 +13,7 @@
       </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items; let i = index;">
+    <tr *ngFor="let item of items | paginate: {itemsPerPage: 8, currentPage:page}; let i = index;">
       <td>{{i+1}}</td>
       <td><p class="text-uppercase">{{item.comuna}}</p></td>
       <td>{{item.positivos_confirmados}}</td>
@@ -22,5 +22,12 @@
     </tr>
   </tbody>
   </table>
+  <pagination-controls
+    (pageChange)="page = $event"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+  >
+  </pagination-controls>
+
 </div>
-<ng-template #espera>Esperando Datos...</ng-template>
+<ng-template #espera class="display-5">Esperando Datos...</ng-template>

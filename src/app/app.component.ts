@@ -8,7 +8,8 @@ import { pipe } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  items:any={};
+  items:any=null;
+  page!: number;
 
   constructor(private http: HttpClient){}
 
