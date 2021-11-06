@@ -1,33 +1,38 @@
-<div *ngIf="items!=null;else espera" class="container">
-  <div class="container text-center">
-    <h2>Casos COVID Activos, Positivos y Confirmados</h2>
-  </div>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>#</th>
-        <th>Comuna/Barrio</th>
-        <th>Positivos</th>
-        <th>Recuperados</th>
-        <th>Activos</th>
+<div class="jumbotron d-flex align-items-center min-vh-100">
+  <div *ngIf="items!=null;else espera" class="container">
+    <div class="container text-center">
+      <h2>Casos COVID Activos, Positivos y Confirmados</h2>
+    </div>
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th width="5%">#</th>
+          <th width="35%">Comuna/Barrio</th>
+          <th width="20%">Positivos</th>
+          <th width="20%">Recuperados</th>
+          <th width="20%">Activos</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items | paginate: {itemsPerPage: 8, currentPage:page}; let i = index;">
+        <td>{{i+1}}</td>
+        <td><p class="text-uppercase">{{item.comuna}}</p></td>
+        <td>{{item.positivos_confirmados}}</td>
+        <td>{{item.recuperados}}</td>
+        <td>{{item.activos}}</td>
       </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of items | paginate: {itemsPerPage: 8, currentPage:page}; let i = index;">
-      <td>{{i+1}}</td>
-      <td><p class="text-uppercase">{{item.comuna}}</p></td>
-      <td>{{item.positivos_confirmados}}</td>
-      <td>{{item.recuperados}}</td>
-      <td>{{item.activos}}</td>
-    </tr>
-  </tbody>
-  </table>
-  <pagination-controls
-    (pageChange)="page = $event"
-    previousLabel="Anterior"
-    nextLabel="Siguiente"
-  >
-  </pagination-controls>
-
+    </tbody>
+    </table>
+    <div class="container text-center">
+      <pagination-controls
+        (pageChange)="page = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+      >
+      </pagination-controls>
+    </div>
+  
+  </div>
 </div>
 <ng-template #espera class="display-5">Esperando Datos...</ng-template>
+
